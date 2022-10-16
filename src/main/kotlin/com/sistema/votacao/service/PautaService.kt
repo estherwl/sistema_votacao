@@ -33,11 +33,12 @@ class PautaService(private val pautaRepository: PautaRepository) {
         pautaRepository.save(pauta.apply { votos = this.votos?.plus(voto) })
     }
 
-    fun encerraVotacao(pauta: Pauta) {
-//        if (pauta.dataEncerramento.isBefore(LocalDateTime.now())) {
+    fun verificaVotacaoEstaEncerrada(pauta: Pauta) {
+        if (pauta.dataEncerramento.isBefore(LocalDateTime.now())) {
             contaResultado(pauta)
             pautaRepository.save(pauta.apply { estaAberta = false })
-//       }
+            throw BusinessException("Pauta encerrada para votação")
+       }
     }
 
     private fun contaResultado(pauta: Pauta) {
