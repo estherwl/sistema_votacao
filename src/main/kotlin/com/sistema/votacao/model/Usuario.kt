@@ -7,9 +7,9 @@ import javax.persistence.*
 data class Usuario(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int,
+    val id: Int?,
     @Column(unique = true)
-    val cpf: String? = null,
+    val cpf: String,
     @Column
-    val nome: String? = null
+    val nome: String
 )

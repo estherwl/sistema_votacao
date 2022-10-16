@@ -10,14 +10,7 @@ import java.util.Optional
 class UsuarioService(private val usuarioRepository: UsuarioRepository) {
 
     fun cadastraUsuario(usuario: Usuario): Usuario {
-//        if (usuarioRepository.findByCpf(usuario.cpf).isPresent) {
-//            throw BusinessException("Usuário já existente")
-//        }
         return usuarioRepository.save(usuario)
-    }
-
-    fun deletaUsuario(id: Int) {
-        return usuarioRepository.deleteById(id)
     }
 
     fun buscaUsuario(id: Int): Optional<Usuario> {
