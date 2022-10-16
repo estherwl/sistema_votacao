@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("api/v1/voto")
+@RequestMapping("/api/v1/voto")
 class VotoController(
     private val votoService: VotoService,
     private val mapperFacade: MapperFacade

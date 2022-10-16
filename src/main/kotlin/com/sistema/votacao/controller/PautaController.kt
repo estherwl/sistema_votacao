@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 
 @RestController
-@RequestMapping("api/v1/pauta")
+@RequestMapping("/api/v1/pauta")
 class PautaController(
     private val pautaService: PautaService,
     private val mapperFacade: MapperFacade
