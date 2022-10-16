@@ -13,7 +13,7 @@ data class PautaDTO(
 
     val votos: List<VotoDTO>? = null,
 
-    val encerramentoVotacao: Long,
+    val encerramentoVotacao: Long?,
 
     val dataEncerramento: LocalDateTime
 )

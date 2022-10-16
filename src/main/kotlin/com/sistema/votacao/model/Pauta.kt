@@ -10,12 +10,11 @@ data class Pauta(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val pautaId: Int?,
 
-    @Column(unique = true)
     var titulo: String,
 
     var estaAberta: Boolean?,
 
-    val resultado: Resultado?,
+    var resultado: Resultado?,
 
     @OneToMany
     var votos: List<Voto>?,

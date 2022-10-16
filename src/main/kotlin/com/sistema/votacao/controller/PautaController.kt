@@ -16,7 +16,7 @@ class PautaController(
 ) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun cadastraPauta(@RequestHeader titulo: String, @RequestHeader encerramentoVotacao: Long): PautaDTO {
+    fun cadastraPauta(@RequestHeader titulo: String, @RequestHeader encerramentoVotacao: Long?): PautaDTO {
         logger.info("Criando pauta nomeada: {}", titulo)
         return pautaService.cadastraPauta(titulo, encerramentoVotacao)
             .let { mapperFacade.map(it, PautaDTO::class.java) }
