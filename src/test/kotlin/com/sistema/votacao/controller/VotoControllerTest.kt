@@ -2,9 +2,9 @@ package com.sistema.votacao.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.sistema.votacao.configuration.MapperConfiguration
-import com.sistema.votacao.controller.dto.UsuarioDTO
-import com.sistema.votacao.model.Usuario
-import com.sistema.votacao.service.UsuarioService
+import com.sistema.votacao.controller.dto.VotoDTO
+import com.sistema.votacao.model.Voto
+import com.sistema.votacao.service.VotoService
 import ma.glasnost.orika.MapperFacade
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.`when`
@@ -20,30 +20,27 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-@WebMvcTest(UsuarioController::class)
+@WebMvcTest(VotoController::class)
 @Import(MapperConfiguration::class)
-class UsuarioControllerTest {
+class VotoControllerTest {
 
     @Autowired
     private lateinit var mockMvc: MockMvc
 
     @MockBean
-    private val usuarioService: UsuarioService? = null
+    private val votoService: VotoService? = null
 
     @SpyBean
     private val mapperFacade: MapperFacade? = null
 
-    private val USUARIO_URL = "/api/v1/usuario"
+    private val VOTO_URL = "/api/v1/voto"
 
     @Test
-    fun criaUsuario() {
-        val usuarioDTO = UsuarioDTO(null, "11111111111", "ana")
-        val usuario = mapperFacade!!.map(usuarioDTO, Usuario::class.java)
-        val json = ObjectMapper().writeValueAsString(usuarioDTO)
+    fun cadastraVoto() {
+        val votoDTO = VotoDTO(null, 1, 1, true)
+        val json = ObjectMapper().writeValueAsString(votoDTO)
 
-        `when`(usuarioService!!.cadastraUsuario(usuario)).thenReturn(usuario)
-
-        val request: MockHttpServletRequestBuilder = MockMvcRequestBuilders.post(USUARIO_URL)
+        val request: MockHttpServletRequestBuilder = MockMvcRequestBuilders.post(VOTO_URL)
             .accept(MediaType.APPLICATION_JSON)
             .contentType(MediaType.APPLICATION_JSON)
             .content(json)
@@ -51,7 +48,8 @@ class UsuarioControllerTest {
         mockMvc.perform(request)
             .andExpect(status().isCreated)
             .andExpect(jsonPath("$.id").value(null))
-            .andExpect(jsonPath("$.cpf").value("11111111111"))
-            .andExpect(jsonPath("$.nome").value("ana"))
+            .andExpect(jsonPath("$.usuarioId").value(1))
+            .andExpect(jsonPath("$.pautaId").value(1))
+            .andExpect(jsonPath("$.voto").value(true))
     }
 }
