@@ -22,7 +22,7 @@ class PautaController(
             .let { mapperFacade.map(it, PautaDTO::class.java) }
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{pautaId}")
     @ResponseStatus(HttpStatus.OK)
     fun buscaPauta(@PathVariable pautaId: Int): PautaDTO {
         logger.info("Buscando pauta com id: {}", pautaId)
