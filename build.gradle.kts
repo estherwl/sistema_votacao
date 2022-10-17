@@ -26,6 +26,7 @@ dependencies {
 	implementation("ma.glasnost.orika:orika-core:1.5.4")
 	implementation("junit:junit:4.13.2")
 	implementation("com.fasterxml.jackson.core:jackson-core:2.13.3")
+	implementation("io.springfox:springfox-boot-starter:3.0.0")
 	runtimeOnly("org.postgresql:postgresql")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.mockito:mockito-core:4.8.0")
