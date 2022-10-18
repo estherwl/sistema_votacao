@@ -17,11 +17,12 @@ class UsuarioService(private val usuarioRepository: UsuarioRepository) {
         return usuarioRepository.save(usuario)
     }
 
-    private fun verificaCPF(cpf: String): Boolean {
+    fun verificaCPF(cpf: String): Boolean {
         val client = RestTemplate().getForEntity("https://user-info.herokuapp.com/users/${cpf}", CpfDTO::class.java)
         val response = client.body!!.status
 
         logger.info(response)
+
         if (response == "UNABLE_TO_VOTE") return false
         return true
     }

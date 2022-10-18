@@ -1,6 +1,5 @@
 package com.sistema.votacao.service
 
-import com.sistema.votacao.controller.dto.PautaDTO
 import com.sistema.votacao.exception.BusinessException
 import com.sistema.votacao.model.Pauta
 import com.sistema.votacao.model.Resultado
@@ -9,10 +8,11 @@ import com.sistema.votacao.repository.PautaRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
+import java.time.temporal.ChronoUnit
 
 @Service
 class PautaService(private val pautaRepository: PautaRepository) {
-    val TEMPO_PADRAO: Long = 1
+    private val TEMPO_PADRAO: Long = 1
 
     fun cadastraPauta(titulo: String, encerramentoVotacao: Long?): Pauta {
         val duracaoVotacao = encerramentoVotacao ?: TEMPO_PADRAO
@@ -55,7 +55,7 @@ class PautaService(private val pautaRepository: PautaRepository) {
     }
 
     private fun verificaDataEncerramento(encerramentoVotacao: Long): LocalDateTime {
-        return LocalDateTime.now().plusMinutes(encerramentoVotacao)
+        return LocalDateTime.now().plusMinutes(encerramentoVotacao).truncatedTo(ChronoUnit.SECONDS)
     }
 
     companion object {
