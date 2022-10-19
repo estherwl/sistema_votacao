@@ -42,7 +42,7 @@ class VotoServiceTest {
         val usuario = Usuario(1, "11111111111", "ana")
 
         `when`(pautaService!!.buscaPauta(voto.pautaId)).thenReturn(pauta)
-        `when`(usuarioService!!.buscaUsuario(voto.usuarioId)).thenReturn(Optional.of(usuario))
+        `when`(usuarioService!!.buscaUsuario(voto.usuarioId)).thenReturn(usuario)
 
         val exception: Throwable = Assertions.catchException { votoService!!.cadastraVoto(voto) }
         assertThat(exception)
