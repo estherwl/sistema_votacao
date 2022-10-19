@@ -41,7 +41,7 @@ tasks.withType<KotlinCompile> {
 
 tasks.jar {
 	manifest {
-		attributes["Main-Class"] = "com.sistema.votacao.VotacaoApplication"
+		attributes["Main-Class"] = "com.sistema.votacao.VotacaoApplicationKt"
 	}
 }
 
