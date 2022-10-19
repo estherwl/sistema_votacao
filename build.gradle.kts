@@ -39,6 +39,12 @@ tasks.withType<KotlinCompile> {
 	}
 }
 
+tasks.jar {
+	manifest {
+		attributes["Main-Class"] = "com.sistema.votacao.VotacaoApplication"
+	}
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
