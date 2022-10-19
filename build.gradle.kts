@@ -40,6 +40,8 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Jar> {
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
 	manifest {
 		attributes["Main-Class"] = "com.sistema.votacao.VotacaoApplicationKt"
 	}
