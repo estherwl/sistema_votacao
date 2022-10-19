@@ -17,3 +17,4 @@ API que gerencia um sistema de votação, com as seguintes funcionalidades:
 * Spring
 * JPA
 * PostgreSQL
+* Heroku
