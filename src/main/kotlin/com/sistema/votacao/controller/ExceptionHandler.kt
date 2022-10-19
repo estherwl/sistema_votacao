@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import org.springframework.web.client.RestClientException
 
 @RestControllerAdvice
 class ExceptionHandler {
@@ -21,6 +22,18 @@ class ExceptionHandler {
     fun onDataException(exception: Exception): ResponseEntity<String> {
         logger.error("error=general message=${exception.message}", exception)
         return ResponseEntity<String>(exception.message ?: "", HttpStatus.CONFLICT)
+    }
+
+    @ExceptionHandler(NoSuchElementException::class)
+    fun onNotFoundException(exception: Exception): ResponseEntity<String> {
+        logger.error("error=general message=${exception.message}", exception)
+        return ResponseEntity<String>(exception.message ?: "", HttpStatus.NOT_FOUND)
+    }
+
+    @ExceptionHandler(RestClientException::class)
+    fun onServerErrorException(exception: Exception): ResponseEntity<String> {
+        logger.error("error=general message=${exception.message}", exception)
+        return ResponseEntity<String>(exception.message ?: "", HttpStatus.INTERNAL_SERVER_ERROR)
     }
 
     companion object {
