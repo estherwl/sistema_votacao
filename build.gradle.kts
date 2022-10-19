@@ -8,7 +8,7 @@ plugins {
 	kotlin("plugin.jpa") version "1.6.21"
 }
 
-group = "com.sistema"
+group = "com.sistema.votacao"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
@@ -36,6 +36,12 @@ tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
 		jvmTarget = "11"
+	}
+}
+
+tasks.withType<Jar> {
+	manifest {
+		attributes["VotacaoApplication"] = "com.sistema.votacao"
 	}
 }
 
