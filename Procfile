@@ -1,1 +1,1 @@
-web: java -jar build/libs/votacao-0.0.1-SNAPSHOT.jar
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar build/libs/votacao-0.0.1-SNAPSHOT.jar
