@@ -18,7 +18,7 @@ class VotoService(
 
         pautaService.verificaVotacaoEstaEncerrada(pauta)
 
-        if (usuario.isPresent && listaVotantesPauta?.allMatch { it != voto.usuarioId } == true) {
+        if (usuario.id != null && listaVotantesPauta?.allMatch { it != voto.usuarioId } == true) {
             votoRepository.save(voto)
             pautaService.salvaVoto(pauta, voto)
         } else {

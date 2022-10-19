@@ -27,8 +27,8 @@ class UsuarioService(private val usuarioRepository: UsuarioRepository) {
         return true
     }
 
-    fun buscaUsuario(id: Int): Optional<Usuario> {
-        return usuarioRepository.findById(id).or { throw BusinessException("Usuário não cadastrado") }
+    fun buscaUsuario(id: Int): Usuario {
+        return usuarioRepository.findUsuarioById(id) ?: throw BusinessException("Usuário não cadastrado")
     }
 
     companion object {
