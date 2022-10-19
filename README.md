@@ -11,9 +11,12 @@ API que gerencia um sistema de votação, com as seguintes funcionalidades:
   - Registrar voto, onde verifica-se se usuário/pauta estão cadastrados e se usuário já votou na pauta. Além disso, é analisado se a votação está encerrada (caso esteja, votos são contabilizados)
 ### Coleção do Postman para testes:
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/18466784-d0ca06bd-e5dc-41b3-972b-0643213c856e?action=collection%2Ffork&collection-url=entityId%3D18466784-d0ca06bd-e5dc-41b3-972b-0643213c856e%26entityType%3Dcollection%26workspaceId%3D32e46bd6-f0df-4dc3-81dc-3b696a8dc8ab)
+### Swagger
+https://api-sistema-votacao.herokuapp.com/swagger-ui/#/
 ## Tecnologias utilizadas
 * Kotlin
 * Gradle
 * Spring
 * JPA
 * PostgreSQL
+* Heroku
